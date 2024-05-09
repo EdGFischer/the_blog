@@ -1,0 +1,92 @@
+<?php
+require "navbar.phtml"
+?>
+
+<section class="container-fluid">
+    <div id="principalHome" class="widthApp">
+        <aside class="d-flex flex-column align-items-center jsutify-content-center">
+            <div class="asideContent d-flex flex-column align-items-center jsutify-content-center">
+                <?php
+                $srcImageProfile = "";
+                if($this->view->userData['user_image'] == ""){
+                    $srcImageProfile = "../data/images/noProfilePic.jpeg";
+                } else {
+                    $srcImageProfile = "../data/images/" . $this->view->userData['user_id'] . "/profile/" . $this->view->userData['user_image']; 
+                }
+                ?>
+                <img class="avatarAside" src="<?= $srcImageProfile ?>">
+                <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+                    <strong class="text-center w-100 mb-3">
+                    <?= $this->view->userData['name'] ?> 
+                    </strong>
+                </div>
+                <div id="divIconsProfile" class="w-100 d-flex justify-content-evenly">
+                    <div class="iconsStatusProfile d-flex flex-column align-items-center justify-content-center">
+                        <i class="bi bi-image"></i>
+                        <small>
+                           <?= $this->view->totalPosts ?>
+                        </small>
+                    </div>
+                    <div class="divisor-icons-profile">
+                    </div>
+                    <div class="iconsStatusProfile d-flex flex-column align-items-center justify-content-center">
+                        <i class="bi bi-eye"></i>
+                        <small>
+                            <?= $this->view->following ?>
+                        </small>
+                    </div>
+                    <div class="divisor-icons-profile">
+                    </div>
+                    <div class="iconsStatusProfile d-flex flex-column align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                        <small>
+                            <?= $this->view->followers ?>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btnNewPost" class="btn" type="button" data-bs-toggle="modal"
+                data-bs-target="#createNewPostModal">
+                Nova Publicação
+            </button>
+        </aside>
+        <main id="postsContainer">
+        </main>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createNewPostModal" tabindex="-1" aria-labelledby="createNewPostModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="createNewPostModalLabel">Nova Publicação </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formNewPost">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <p>
+                            Texto da publicação
+                        </p>
+                        <textarea required id="textNewPost" class="w-100" maxlength="500"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="uploadNewPostImage" class="form-label">Escolha o seu arquivo</label>
+                        <input class="form-control form-control-sm" id="uploadNewPostImage" type="file">
+                    </div>
+                    <div id="imageNewPostArea" class="mb-3 d-flex jusitfy-content-center align-items-center">
+                        <img id="previewImageNewpost" src="">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Publicar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

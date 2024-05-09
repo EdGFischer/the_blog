@@ -1,0 +1,31 @@
+<header id="navBarApp">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav w-100 d-flex justify-content-between">
+                    <div class="divisorNavBar d-flex align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile/<?= $_SESSION['username'] ?>">Meu Perfil</a>
+                        </li>
+                    </div>
+                    <div class="divisorNavBar d-flex align-items-center">
+                        <li class="nav-item">
+                            <form id="searchUsers" class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Explorar" aria-label="Search">
+                                <ul id="usersList" class="userListNavBar"></ul>
+                            </form>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="/logOff" class="text-decoration-none text-danger">
+                                <i class="bi bi-box-arrow-in-right"></i>
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

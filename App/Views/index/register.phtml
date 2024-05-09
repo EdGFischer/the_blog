@@ -1,0 +1,45 @@
+<section id="sectionRegister" class="h-100 container-fluid p-5 d-flex align-items-center justify-content-center">
+
+    <div id="divRegister" class="container p-3 rounded">
+        <h2 class="w-100 text-center">
+            Seja bem vindo ao mundo dos Blogs
+        </h2>
+        <form class="d-flex flex-wrap" id="formRegister">
+            <div class="mb-2 p-2 col-6">
+                <label for="username" class="form-label mb-1">Nome do Usuário</label>
+                <input type="text" class="form-control defaultInput" id="username" maxlength="30" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-2 p-2 col-6">
+                <label for="name" class="form-label mb-1">Nome Completo</label>
+                <input type="text" class="form-control defaultInput" id="name" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-2 p-2 col-6">
+                <label for="password" class="form-label mb-1">Senha</label>
+                <input type="password" class="form-control defaultInput" id="password">
+            </div>
+            <div class="mb-2 p-2  col-6">
+                <label for="confirmPassword" class="form-label mb-1">Confirmar Senha</label>
+                <input type="password" class="form-control defaultInput" id="confirmPassword">
+            </div>
+            <div class="mb-2 p-2 col-12">
+                <label for="email" class="form-label mb-1">E-mail</label>
+                <input type="email" class="form-control defaultInput" id="email">
+            </div>
+            <div class="mb-2 p-2  col-12">
+                <label for="confirmEmail" class="form-label mb-1">Confirmar E-mail</label>
+                <input type="email" class="form-control defaultInput" id="confirmEmail">
+            </div>
+            <div class="w-100 d-flex justify-content-between align-items-center">
+                <button type="submit" id="register" class="btn btn-success">Cadastrar</button>
+                <div>
+                    <small>Já possui cadastro? <a href="/" class="text-decoration-none text-secondary">Acesse sua
+                            conta!</a></small>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+<?php
+require('footer.phtml')
+    ?>

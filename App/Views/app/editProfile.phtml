@@ -1,0 +1,77 @@
+<?php
+require "navbar.phtml";
+?>
+<section class="container-fluid">
+    <div id="containerEditProfile" class="widthApp">
+        <aside class="d-flex flex-column align-items-center justify-content-center">
+            <div class="asideContent d-flex flex-column align-items-center justify-content-center">
+            <?php
+                $srcImageProfile = "";
+                if($this->view->userData['user_image'] == ""){
+                    $srcImageProfile = "../data/images/noProfilePic.jpeg";
+                } else {
+                    $srcImageProfile = "../data/images/" . $this->view->userData['user_id'] . "/profile/" . $this->view->userData['user_image']; 
+                }
+            ?>
+                <img class="avatarAside" src="<?= $srcImageProfile ?>">
+                <button id="btnNewProfilePhoto" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#modalUpdateProfilePicture">
+                    Atualizar Imagem
+                </button>
+            </div>
+        </aside>
+        <main id="editUserContainer">
+            <form class="d-flex flex-wrap" id="formUpdateUsername">
+                <div class="p-2 py-0">
+                    <label for="username" class="form-label mb-1">Atualizar Nome de Usuário</label>
+                    <input type="text" class="form-control defaultInput" id="username" name="username" maxlength="30" aria-describedby="username" value="<?= $this->view->userData['username'] ?>">
+                </div>
+                <button class="btn">Atualizar Usuário</button>
+            </form>
+
+            <h5>Atualizar Dados da Conta</h5>
+
+            <form class="d-flex flex-wrap" id="formUpdateUser">
+                <div class="mb-2 p-2 col-9">
+                    <label for="name" class="form-label mb-1">Nome Completo</label>
+                    <input type="text" class="form-control defaultInput" id="name" name="name" value="<?= $this->view->userData['name'] ?>">
+                </div>
+                <div class="mb-2 p-2 col-3">
+                    <label for="birthDate" class="form-label mb-1">Data de Nascimento</label>
+                    <input type="date" class="form-control defaultInput" id="birthDate" name="birthDate" value="<?= $this->view->userData['birth_date'] ?>">
+                </div>
+                <div class="mb-2 p-2 col-12">
+                    <label for="email" class="form-label mb-1">E-mail</label>
+                    <input type="email" class="form-control defaultInput" id="email" name="email" value="<?= $this->view->userData['email'] ?>">
+                </div>
+                <button class="btn">Atualizar Dados</button>
+            </form>
+        </main>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalUpdateProfilePicture" tabindex="-1" aria-labelledby="updateProfilePictureLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="updateProfilePictureLabel">Alteração Foto </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formUpdateProfilePicture">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="updateProfilePicture" class="form-label">Escolha o seu arquivo</label>
+                        <input class="form-control form-control-sm" id="updateProfilePicture" name="updateProfilePicture" type="file">
+                    </div>
+                    <div id="previewProfilePicture" class="mb-3 d-flex jusitfy-content-center align-items-center">
+                        <img id="newProfilePicture" src="">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Publicar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

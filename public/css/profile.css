@@ -1,0 +1,166 @@
+section {
+    background-color: var(--gray-900);
+    min-height: calc(100vh - 82px);
+}
+
+.header-profile {
+    background-color: var(--gray-800);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--gray-300);
+}
+
+.header-profile img {
+    width: calc(5rem + 12px);
+    height: calc(5rem + 12px);
+    border-radius: 1rem;
+    border: 3px solid var(--gray-800);
+    outline: 3px solid var(--blue-300);
+    cursor: pointer;
+    transition: outline 0.5s, border 0.5s;
+}
+
+.header-profile img:hover {
+    outline: 3px solid var(--blue-500);
+}
+
+.header-profile strong {
+    font-size: 1.3rem;
+    color: var(--blue-300);
+}
+
+.header-profile p {
+    color: var(--gray-300);
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info {
+    gap: 0.625rem;
+}
+
+.profile-info a {
+    width: fit-content;
+    background: var(--blue-300);
+    color: var(--gray-700);
+    border: 1px solid var(--blue-300);
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    min-width: 10rem;
+    width: min-content;
+}
+.profile-info a i{
+    margin-right: 0.625rem;
+}
+
+.header-profile .profile-info a:hover,
+.header-profile .profile-info a:focus,
+.header-profile .profile-info a:active {
+    border: 1px solid var(--blue-100);
+    background-color: var(--blue-100);
+    color: var(--gray-700);
+}
+
+.header-profile .profile-info .btn-unfollow,
+.header-profile .profile-info .btn-unfollow:hover,
+.header-profile .profile-info .btn-unfollow:focus,
+.header-profile .profile-info .btn-unfollow:active {
+    background-color: var(--red-700);
+    color: var(--white);
+    border: 1px solid var(--red-700);
+    font-weight: 600;
+    min-width: 10rem;
+    width: min-content;
+    white-space: nowrap;
+}
+
+.header-profile .profile-info .btn-follow,
+.header-profile .profile-info .btn-follow:hover,
+.header-profile .profile-info .btn-follow:focus,
+.header-profile .profile-info .btn-follow:active {
+    background-color: var(--green-500);
+    color: var(--gray-700);
+    border: 1px solid var(--green-500);
+    font-weight: 600;
+    min-width: 10rem;
+    width: min-content;
+    white-space: nowrap;
+}
+
+
+.profile-info .btn-unfollow:hover,
+.profile-info .btn-follow:hover {
+    opacity: 0.7;
+}
+
+.icons-status-profile {
+    min-width: 5rem;
+}
+
+ul.nav-tabs {
+    border-bottom: 1px solid var(--blue-300);
+}
+
+#profileTab button.active {
+    background-color: var(--blue-300);
+    color: var(--gray-900);
+    border: 1px solid var(--blue-300);
+    font-weight: 600;
+}
+
+#profileTab button {
+    background-color: transparent;
+    color: var(--gray-100);
+}
+
+#profileTab button:hover {
+    background-color: transparent;
+    color: var(--gray-100);
+    border: 1px solid var(--blue-300);
+}
+
+#profileTab button.active:hover {
+    background-color: var(--blue-300);
+    color: var(--gray-700);
+    border: 1px solid var(--blue-300);
+}
+
+/* Community and Following Tab */
+.community,
+.following {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1rem;
+}
+.div-community,
+.div-following {
+    border-radius: 0.5rem;
+    background-color: var(--gray-800);
+    padding: 0.5rem;
+}
+
+.div-community strong,
+.div-following strong {
+    color: var(--blue-300);
+}
+
+.img-profile-community,
+.img-profile-following {
+    width: calc(2.5rem + 12px);
+    height: calc(2.5rem + 12px);
+    border-radius: 0.5rem;
+    border: 1px solid var(--gray-400);
+    outline: 1px solid var(--blue-100);
+}
+
+#home-tab-pane {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+}

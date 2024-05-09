@@ -1,0 +1,42 @@
+<section id="sectionIndex" class="w-100">
+    <div id="principalIndexDiv" class="w-100 justify-content-center align-items-center">
+        <aside id="assideIndex">
+            <h2 class="text-center">Acesse o mundo dos Blogs agora!</h2>
+        </aside>
+        <main id="mainIndex" class="w-100">
+            <form id="formLogin" class="d-flex flex-column align-items-center justify-content-center">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <label for="username">Acesso</label>
+                    <input type="text" class="defaultInput" id="username" name="username">
+                </div>
+
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" class="defaultInput">
+                </div>
+
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <button type="submit" class="btn btn-success" id="btnLogin">Acessar</button>
+                </div>
+
+                <small>Ainda não possuí cadastro? Registre-se
+                    <a class="text-decoration-none pointer" href="/register">aqui</a>
+                </small>
+                <?php
+                if (isset($_GET['login']) && $_GET['login'] == "noAuthentication") {
+                ?>
+                    <div class="w-100 d-flex align-items-start justify-content-between alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        <small>
+                            <strong>Faça seu login!</strong> Para conseguir acessar a página requisitada.
+                        </small>
+                        <button type="button" class="btn-close position-relative p-0" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                <?php
+                }   
+                ?>
+            </form>
+        </main>
+    </div>
+</section>
+<?php
+require("footer.phtml");

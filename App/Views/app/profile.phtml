@@ -1,0 +1,138 @@
+<?php
+require "navbar.phtml";
+?>
+
+<section class="container-fluid">
+    <div class="widthApp w-100 d-flex flex-column">
+        <div class="w-100 header-profile">
+            <div class="d-flex">
+                <?php
+                    $srcImageProfile = "";
+                    if($this->view->profileData['user_image'] == ""){
+                        $srcImageProfile = "../data/images/noProfilePic.jpeg";
+                    } else {
+                        $srcImageProfile = "../data/images/" . $this->view->profileData['user_id'] . "/profile/" . $this->view->profileData['user_image']; 
+                    }
+                ?>
+                <img src="<?= $srcImageProfile ?>">
+                <div class="profile-info ps-3 d-flex flex-column">
+                    <strong class="">
+                        <?= $this->view->profileData['name'] ?>
+                    </strong>
+                    <?php
+                    $urlSegments = explode('/', $_SERVER['REQUEST_URI']);
+                    $profileUsername = end($urlSegments);
+
+                    if ($_SESSION['username'] == $profileUsername) {
+                    ?>
+                        <a href="/editProfile" class="btn">
+                            <i class="bi bi-person-fill-gear"></i> Editar perfil
+                        </a>
+                    <?php
+                    } else {
+                       if($this->view->isFollowing) {
+                        ?>
+                        <button onclick="unfollowUser(<?=$this->view->profileData['user_id']?>)" class="btn btn-unfollow">
+                            Deixar de Seguir
+                        </button>
+                        <?php
+                       } else {
+                            ?>
+                        <button onclick="followUser(<?=$this->view->profileData['user_id']?>)"class="btn btn-follow">
+                            Seguir
+                        </button>
+                        <?php
+                       }
+                    }
+                    ?>
+                </div>
+                <div class="icons-profile d-flex">
+                    <div class="icons-status-profile d-flex flex-column align-items-center justify-content-center">
+                        <i class="bi bi-image"></i>
+                        <small>
+                        <?= $this->view->totalPosts ?>
+                        </small>
+                    </div>
+                    <div class="icons-status-profile d-flex flex-column align-items-center justify-content-center">
+                        <i class="bi bi-eye"></i>
+                        <small>
+                        <?= $this->view->following ?>
+                        </small>
+                    </div>
+                    <div class="icons-status-profile d-flex flex-column align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                        <small>
+                        <?= $this->view->followers ?>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs" id="profileTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Publicações</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="following-tab" data-bs-toggle="tab" data-bs-target="#following-tab-pane" type="button" role="tab" aria-controls="following-tab-pane" aria-selected="false">Seguindo</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="community-tab" data-bs-toggle="tab" data-bs-target="#community-tab-pane" type="button" role="tab" aria-controls="community-tab-pane" aria-selected="false">Seguidores</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="profileTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+            </div>
+            <div class="tab-pane fade" id="community-tab-pane" role="tabpanel" aria-labelledby="community-tab" tabindex="0">
+                <div class="community mt-2">
+                <?php
+                foreach($this->view->followersList as $followers) {
+                    $srcImageFollowers = "";
+                    if($followers['user_image'] == ""){
+                        $srcImageFollowers = "../data/images/noProfilePic.jpeg";
+                    } else {
+                        $srcImageFollowers = "../data/images/" . $followers['user_id'] . "/profile/" . $followers['user_image']; 
+                    }
+                ?>
+                    <div class="div-community">
+                        <a href="/profile/<?= $followers['username'] ?>" class="text-decoration-none">
+                            <img class="img-profile-community" src="<?= $srcImageFollowers ?>">
+                            <strong class="ms-2"><?= $followers['name'] ?></strong>
+                        </a>
+                    </div>
+                <?php
+                }
+                ?>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="following-tab-pane" role="tabpanel" aria-labelledby="following-tab" tabindex="0">
+                <div class="following mt-2">
+                <?php
+                foreach($this->view->followingList as $following) {
+                    $srcImageFollowing = "";
+                    if($following['user_image'] == ""){
+                        $srcImageFollowing = "../data/images/noProfilePic.jpeg";
+                    } else {
+                        $srcImageFollowing = "../data/images/" . $following['user_id'] . "/profile/" . $following['user_image']; 
+                    }
+                ?>
+                    <div class="div-following">
+                        <a href="/profile/<?= $following['username'] ?>" class="text-decoration-none">
+                            <img class="img-profile-following" src="<?= $srcImageFollowing ?>">
+                            <strong class="ms-2"><?= $following['name'] ?></strong>
+                        </a>
+                    </div>
+
+                <?php
+                }
+                ?>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
